@@ -42,7 +42,7 @@
             showDenyButton: true,
             denyButtonColor: "#3085d6",
           }).then((result) => {
-            pet = result.isConfirmed;
+            pet = !result.isConfirmed;
             Swal.fire({
               icon: "question",
               title: "Q4",
