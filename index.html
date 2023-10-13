@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>テスト</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <h1 id="result"></h1>
+    <p id="hobby"></p>
+    <p id="talent"></p>
+    <script>
+      var hobby, talent, pet, editor;
+      Swal.fire({
+        icon: "question",
+        title: "Q1",
+        text: "趣味は?",
+        backdrop: "rgba(169, 169, 169, 1)",
+        confirmButtonText: "次へ",
+        input: "text",
+        inputPlaceholder: "趣味を入力",
+      }).then((result) => {
+        hobby = result.value;
+        Swal.fire({
+          icon: "question",
+          title: "Q2",
+          text: "特技は?",
+          backdrop: "rgba(169, 169, 169, 1)",
+          confirmButtonText: "次へ",
+          input: "text",
+          inputPlaceholder: "特技を入力",
+        }).then((result) => {
+          talent = result.value;
+          Swal.fire({
+            icon: "question",
+            title: "Q3",
+            text: "犬派?猫派?",
+            backdrop: "rgba(169, 169, 169, 1)",
+            confirmButtonText: "犬派",
+            denyButtonText: "猫派",
+            showDenyButton: true,
+            denyButtonColor: "#3085d6",
+          }).then((result) => {
+            pet = result.isConfirmed;
+            Swal.fire({
+              icon: "question",
+              title: "Q4",
+              text: "使用しているエディタは?",
+              backdrop: "rgba(169, 169, 169, 1)",
+              confirmButtonText: "VScode",
+              denyButtonText: "それ以外",
+              showDenyButton: true,
+              denyButtonColor: "#3085d6",
+            }).then((result) => {
+              editor = result.value;
+              document.getElementById("hobby").innerHTML = "趣味:" + hobby;
+              document.getElementById("talent").innerHTML = "特技:" + talent;
+              if (pet && editor) {
+                document.getElementById("result").innerHTML = "よろしく!";
+              } else {
+                document.getElementById("result").innerHTML = "死ね!";
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
